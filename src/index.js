@@ -3,12 +3,23 @@
 
 import dotenv from 'dotenv';
 import connectDB from './db/index.js';
+import app from './app.js';
 
 dotenv.config({
     path : "./env"
 })
 
-connectDB()
+//Loads .env file contents into process.env by default. If DOTENV_KEY is present, it smartly attempts to load encrypted .env.vault file contents into process.env.
+
+connectDB().then(() => {
+    app.listen(process.env.PORT || 8000, () => {
+        console.log(`Server is running on port ${process.env.PORT}`)
+    })
+}).catch((error) => {
+    console.error("MONGO DB connection failed !!! ", error)
+})
+
+
 /*
 
 import mongoose from "mongoose";
