@@ -6,7 +6,7 @@ import connectDB from './db/index.js';
 import app from './app.js';
 
 dotenv.config({
-    path : "./env"
+    path : "./.env"
 })
 
 //Loads .env file contents into process.env by default. If DOTENV_KEY is present, it smartly attempts to load encrypted .env.vault file contents into process.env.

@@ -55,7 +55,7 @@ const userSchema = new Schema(
 // "Pre" save hook to hash the password before saving the user to the database
 userSchema.pre("save", async function(next) {
     if(this.isModified("password")) {               // If the password is modified then only hash the password .(isModified is a inbuilt mongoose method)
-        this.password = bcrypt.hash(this.password, 8)
+        this.password = await bcrypt.hash(this.password, 8)
     }
     next()
 })
