@@ -62,7 +62,7 @@ userSchema.pre("save", async function(next) {
 
 // Method to compare the password
 // NOTE : Schema methods are used to define instance methods. Instance methods must be added to the schema before compiling it with mongoose.model()
-userSchema.methods.comparePassword = async function(plainPassword) {
+userSchema.methods.isPasswordCorrect = async function(plainPassword) {
     return await bcrypt.compare(plainPassword, this.password)
 }
 
